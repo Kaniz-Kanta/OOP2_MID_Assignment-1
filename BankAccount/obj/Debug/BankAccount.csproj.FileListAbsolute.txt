@@ -1,2 +1,0 @@
-C:\Users\user\OneDrive\Documents\C#\BankAccount\obj\Debug\BankAccount.csprojAssemblyReference.cache
-C:\Users\user\OneDrive\Documents\C#\BankAccount\obj\Debug\BankAccount.csproj.CoreCompileInputs.cache
