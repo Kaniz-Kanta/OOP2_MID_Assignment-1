@@ -44,6 +44,7 @@ namespace BankAccount
             if (this.balance >= amount)
             {
                 this.balance = this.balance - amount;
+                Console.WriteLine("Withdraw Successfully!!");
             }
             else
             {
@@ -53,11 +54,13 @@ namespace BankAccount
         public void Deposite(double amount)
         {
             this.balance = this.balance + amount;
+            Console.WriteLine("Deposite Successfully!!");
         }
         public void Transfer(Account receiver, double amount)
         {
             receiver.Deposite(amount);
             this.Withdraw(amount);
+            Console.WriteLine("Transfer Successfully!!");
         }
         public void ShowAccountInformation()
         {

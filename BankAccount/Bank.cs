@@ -63,7 +63,7 @@ namespace BankAccount
         {
             Console.WriteLine("Enter a Account Number: ");
             int accountNumber = Convert.ToInt32(Console.ReadLine());
-
+            bool check = false;
             for (int i = 0; i < myBank.Length; i++)
             {
                 if (myBank[i] == null)
@@ -73,25 +73,28 @@ namespace BankAccount
                 else if (transactionType == 1 && myBank[i].GetAccountNumber() == accountNumber)
                 {
                     myBank[i].Deposite(amount);
+                    check = true;
                     break;
                 }
                 else if (transactionType == 2 && myBank[i].GetAccountNumber() == accountNumber)
                 {
                     myBank[i].Withdraw(amount);
+                    check = true;
                     break;
                 }
                 else if (transactionType == 3 && myBank[i].GetAccountNumber() == accountNumber)
                 {
                     myBank[i].Transfer(receiver, amount);
+                    check = true;
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("You Choose a Wrong Number!!!! ");
-                    break;
-                }
+
             }
-        }
+            if (check == false)
+            {
+                Console.WriteLine("You Choose a Wrong Number!!!! ");
+            }
+        } 
         public void PrintAccountDetails()
         {
             for (int i = 0; i < myBank.Length; i++)

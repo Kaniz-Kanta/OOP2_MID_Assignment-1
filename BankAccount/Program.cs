@@ -16,9 +16,12 @@ namespace BankAccount
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("How many accounts do you want to create? \n");
-            int size = Convert.ToInt32(Console.ReadLine());
-            Bank ourBank = new Bank("Developer's bank", size);
+            bool limit = true;
+            while (limit)
+            {
+                Console.WriteLine("How many accounts do you want to create? \n");
+               int size = Convert.ToInt32(Console.ReadLine());
+               Bank ourBank = new Bank("Developer's bank", size);
 
             for (int i = 0; i < size; i++)
             {
@@ -42,6 +45,13 @@ namespace BankAccount
             ourBank.PrintAccountDetails();
             ourBank.Transaction(2, 100);
             ourBank.PrintAccountDetails();
+                Console.WriteLine("\n Press 0 for close this application \n");
+                int stop = Convert.ToInt32(Console.ReadLine());
+                if (stop == 0)
+                {
+                    limit = false;
+                }
+            }
         }
     }
 }
