@@ -8,27 +8,40 @@ namespace BankAccount
 {
     class Program
     {
-        static int accountNumber = 1000;
+        static int GanerateAccountNumber(int i)
+        {
+            int start = 1000;
+            int accountNumber = start + i;
+            return accountNumber;
+        }
         static void Main(string[] args)
         {
-            /*Address address1 = new Address("45", "10", "Dhaka", "Bangladesh");
-        Account account1 = new Account(1001,"Shakib",2000,address1);
-        account1.ShowAccountInformation();
-        Console.WriteLine();
-        account1.Deposite(220.5);
-        Console.WriteLine();
-        account1.ShowAccountInformation();
-        Console.WriteLine();
-        account1.Withdraw(100);
-        Console.WriteLine();
-        account1.ShowAccountInformation();*/
-            Bank ourBank = new Bank("Developer's bank", 5);
-            ourBank.AddAccount(new Account(accountNumber++, "Shakib", 2000, new Address("45", "10", "Dhaka", "Bangladesh")));
-            // ourBank.PrintAccountDetails();
+            Console.WriteLine("How many accounts do you want to create? \n");
+            int size = Convert.ToInt32(Console.ReadLine());
+            Bank ourBank = new Bank("Developer's bank", size);
 
-            ourBank.AddAccount(new Account(accountNumber++, "Rahman", 1500, new Address("54", "17", "Rajshahi", "Bangladesh")));
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine("\nAccount " + (i + 1) + "------");
+                Console.WriteLine("Name: ");
+                string accountName = Console.ReadLine();
+                Console.WriteLine("Balance: ");
+                double balance = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("House no: ");
+                string houseNo = Console.ReadLine();
+                Console.WriteLine("Road no: ");
+                string roadNo = Console.ReadLine();
+                Console.WriteLine("City: ");
+                string city = Console.ReadLine();
+                Console.WriteLine("Country: ");
+                string country = Console.ReadLine();
+
+                ourBank.AddAccount(new Account(GanerateAccountNumber(i), accountName, balance, new Address(houseNo, roadNo, city, country)));
+
+            }
             ourBank.PrintAccountDetails();
-            //ourBank.Check(1);
+            ourBank.Transaction(2, 100);
+            ourBank.PrintAccountDetails();
         }
     }
 }

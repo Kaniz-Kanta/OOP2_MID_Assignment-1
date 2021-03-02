@@ -48,6 +48,7 @@ namespace BankAccount
                 }
                 else if (myBank[i] == accountNumber)
                 {
+                    myBank[i] = null;
                     myBank[i] = myBank[i + 1];
                     break;
                 }
@@ -57,24 +58,38 @@ namespace BankAccount
                 }
             }
         }
-        //object[] optional = new object[] { 200, 1001 };
-        public void Transaction(int transactionType, params object[] optional)
+
+        public void Transaction(int transactionType, [Optional] double amount, [Optional] Account receiver)
         {
-            if (transactionType == 1)
+            Console.WriteLine("Enter a Account Number: ");
+            int accountNumber = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < myBank.Length; i++)
             {
-                Account.Deposite(optional[]);
-            }
-            else if (transactionType == 2)
-            {
-                Account.Withdraw(optional[]);
-            }
-            else if (transactionType == 3)
-            {
-                Account.Transfer(optional[]);
-            }
-            else
-            {
-                Console.WriteLine("You Choose a Wrong Number!!!! ");
+                if (myBank[i] == null)
+                {
+                    continue;
+                }
+                else if (transactionType == 1 && myBank[i].GetAccountNumber() == accountNumber)
+                {
+                    myBank[i].Deposite(amount);
+                    break;
+                }
+                else if (transactionType == 2 && myBank[i].GetAccountNumber() == accountNumber)
+                {
+                    myBank[i].Withdraw(amount);
+                    break;
+                }
+                else if (transactionType == 3 && myBank[i].GetAccountNumber() == accountNumber)
+                {
+                    myBank[i].Transfer(receiver, amount);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("You Choose a Wrong Number!!!! ");
+                    break;
+                }
             }
         }
         public void PrintAccountDetails()

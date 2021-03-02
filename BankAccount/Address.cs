@@ -21,32 +21,11 @@ namespace BankAccount
             this.country = country;
         }
 
-        public string HouseNo
+        public string GetAddress()
         {
-            set { this.houseNo = value; }
-            get { return this.houseNo; }
-        }
-        public string RoadNo
-        {
-            set { this.roadNo = value; }
-            get { return this.roadNo; }
+            return "Road No: " + this.roadNo + "\nHouse No: " + this.houseNo + "\nCity: " + this.city + "\nCountry: " + this.country;
         }
 
-        public string City
-        {
-            set { this.city = value; }
-            get { return this.city; }
-        }
-        public string Country
-        {
-            set { this.country = value; }
-            get { return this.country; }
-        }
-
-        public void PrintAddress()
-        {
-            Console.WriteLine("Address:House No-{0}, Road No-{1}, City-{2}, country-{3}", this.houseNo, this.roadNo, this.city, this.country);
-
-        }
+    }
     }
 }
